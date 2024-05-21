@@ -27,7 +27,7 @@
   ];
   home-manager.users."${config._module.args.guestUserName}".home.stateVersion = "${config.system.stateVersion}";
   imports = [
-    ./default.nix
+    ./default-specialisation.nix
     ./filesystems.nix
     ./firefox.nix
     ./hardware-configuration.nix
