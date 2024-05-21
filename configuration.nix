@@ -15,7 +15,7 @@
   boot.loader.systemd-boot.configurationLimit = 3;
   environment.etc = {
     "nixos/backup/configuration.nix".text = "${builtins.readFile ./configuration.nix}";
-    "nixos/backup/default.nix".text = "${builtins.readFile ./default.nix}";
+    "nixos/backup/default-specialisation.nix".text = "${builtins.readFile ./default-specialisation.nix}";
     "nixos/backup/filesystems.nix".text = "${builtins.readFile ./filesystems.nix}";
     "nixos/backup/flake.nix".text = "${builtins.readFile ./flake.nix}";
   };
