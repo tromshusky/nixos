@@ -44,7 +44,7 @@
   services.openssh.enable = true;
   system.autoUpgrade = {
     enable = true;
-    flake = "/nix/myfiles/flakes/";
+    flake = "github:tromshusky/nixos";
   };
   system.stateVersion = "24.05";
   time.timeZone = "Europe/Amsterdam";
