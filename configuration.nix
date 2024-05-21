@@ -13,12 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 3;
-  environment.etc = {
-    "nixos/backup/configuration.nix".text = "${builtins.readFile ./configuration.nix}";
-    "nixos/backup/default-specialisation.nix".text = "${builtins.readFile ./default-specialisation.nix}";
-    "nixos/backup/filesystems.nix".text = "${builtins.readFile ./filesystems.nix}";
-    "nixos/backup/flake.nix".text = "${builtins.readFile ./flake.nix}";
-  };
+  environment.etc."nixos/backup".source = "${./.}";
   environment.systemPackages = [
     pkgs.kitty
     pkgs.librewolf
