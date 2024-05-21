@@ -33,8 +33,7 @@
       "org/x/apps/portal".color-scheme = "prefer-dark";
     };
   };
-  home-manager.users."${config._module.args.powerUserName}".home = {
-    stateVersion = "${config.system.stateVersion}";
-    file.".ssh".source = "${config._module.args.powerUserHome}/.ssh";
-  };
+#  home-manager.users."${config._module.args.powerUserName}".home = {
+#    stateVersion = "${config.system.stateVersion}";
+#  };
 }
