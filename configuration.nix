@@ -20,22 +20,21 @@
     pkgs.thunderbird
     pkgs.vim
   ];
-  home-manager.users."${config._module.args.guestUserName}".home.stateVersion = "${config.system.stateVersion}";
   imports = [
+    home-manager.nixosModules.default
     ./default-specialisation.nix
     ./filesystems.nix
     ./firefox.nix
     ./hardware-configuration.nix
     ./specialisations.nix
     ./users.nix
-    home-manager.nixosModules.default
   ];
   nix.settings.experimental-features = [
     "flakes"
     "nix-command"
   ];
   nixpkgs.config.allowUnfree = true;
-  services.displayManager.autoLogin.user = "guest";
+  services.displayManager.autoLogin.user = "${config._module.args.guestUserName}";
   services.openssh.enable = true;
   swapDevices = [ { device = "/nix/swapfile"; size=20000; } ];
   system.autoUpgrade = {
