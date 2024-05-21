@@ -15,6 +15,7 @@
   boot.loader.systemd-boot.configurationLimit = 3;
   environment.etc."nixos/backup".source = "${./.}";
   environment.systemPackages = [
+    pkgs.git
     pkgs.kitty
     pkgs.librewolf
     pkgs.thunderbird
