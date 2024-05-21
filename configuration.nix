@@ -42,6 +42,7 @@
   nixpkgs.config.allowUnfree = true;
   services.displayManager.autoLogin.user = "guest";
   services.openssh.enable = true;
+  swapDevices = [ { device = "/nix/swapfile"; size=20000; } ];
   system.autoUpgrade = {
     enable = true;
     flake = "github:tromshusky/nixos";
