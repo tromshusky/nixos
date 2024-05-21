@@ -1,12 +1,12 @@
 {...}: {
   specialisation = {
-    budgie.configuration.imports = [./budgie.nix];
-    cinnamon.configuration.imports = [./cinnamon.nix];
-    enlightenment.configuration.imports = [./enlightenment.nix];
-    gnome-full.configuration.imports = [./gnome.nix];
-    hyprland.configuration.imports = [./hyprland.nix];
-    pantheon.configuration.imports = [./pantheon.nix];
-    plasma6.configuration.imports = [./plasma6.nix];
-    xfce.configuration.imports = [./xfce.nix];
+    budgie.configuration.imports = [./desktops/budgie.nix];
+    cinnamon.configuration.imports = [./desktops/cinnamon.nix];
+    enlightenment.configuration.imports = [./desktops/enlightenment.nix];
+    gnome-full.configuration.imports = [./desktops/gnome.nix];
+    hyprland.configuration.imports = [./desktops/hyprland.nix];
+    pantheon.configuration.imports = [./desktops/pantheon.nix];
+    plasma6.configuration.imports = [./desktops/plasma6.nix];
+    xfce.configuration.imports = [./desktops/xfce.nix];
   };
 }
