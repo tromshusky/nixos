@@ -39,7 +39,7 @@
   swapDevices = [ { device = "/nix/swapfile"; size=20000; } ];
   system.autoUpgrade = {
     enable = true;
-    flake = "${./flake.nix}";
+#    flake = "${./flake.nix}";
   };
   system.stateVersion = "24.05";
   time.timeZone = "Europe/Amsterdam";

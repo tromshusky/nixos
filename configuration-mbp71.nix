@@ -11,6 +11,7 @@
   ];
   system.autoUpgrade = {
     enable = true;
+    flags = [ "--no-write-lock-file" ];
     flake = "github:tromshusky/nixos#macbookpro7-1";
   };
 }
