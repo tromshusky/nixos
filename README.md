@@ -16,6 +16,9 @@ sudo nixos-rebuild boot github:tromshusky/nixos#macbookpro7-1 --no-write-lock-fi
 
 nixos-rebuild can depend on >10GB ram, so in case 
 ```bash
+free -h
+```
+```bash
 btrfs filesystem mkswapfile --size 20G /nix/swapfilet
 swapon swapfilet
 ```
