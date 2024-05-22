@@ -26,7 +26,6 @@
     ./default-specialisation.nix
     ./filesystems.nix
     ./firefox.nix
-    ./hardware-configuration.nix
     ./specialisations.nix
     ./users.nix
   ];
