@@ -8,6 +8,11 @@
       specialArgs = attrs;
       modules = [ ./configuration.nix ];
     };
+    nixosConfigurations."macbookpro7-1" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = attrs;
+      modules = [ ./configuration-mbp71.nix ];
+    };
   };
 }
 
