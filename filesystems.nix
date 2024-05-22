@@ -1,6 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 let
-  btrDev = "/dev/disk/by-uuid/d5177e1d-5956-436b-b6ef-40071e5fece5";
+  bootDev = "/dev/sda1";
+  btrDev = "/dev/sda2";
 in
 {
   fileSystems."/" =
@@ -9,7 +10,7 @@ in
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7996-1D0B";
+    { device = bootDev;
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
