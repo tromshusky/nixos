@@ -7,3 +7,9 @@ examples
 ```sudo nixos-rebuild boot .#macbookpro7-1 --no-write-lock-file```
 
 ```sudo nixos-rebuild boot github:tromshusky/nixos#macbookpro7-1 --no-write-lock-file```
+
+nixos-rebuild can depend on >10GB ram, so in case 
+```bash
+btrfs filesystem mkswapfile --size 20G /nix/swapfilet
+swapon swapfilet
+```
