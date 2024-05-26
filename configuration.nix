@@ -42,5 +42,6 @@
 #    flake = "${./flake.nix}";
   };
   system.stateVersion = "24.05";
+# services.automatic-timezoned.enable = true;
   time.timeZone = "Europe/Amsterdam";
 }
