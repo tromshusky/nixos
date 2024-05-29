@@ -5,6 +5,7 @@
   home-manager,
   ...
 }: {
+  nixpkgs.config.allowUnfree = true; # driver in hardware-configuration is unfree
   imports = [
     ./configuration.nix
     ./hardware-configurations/macbookpro7-1.nix
