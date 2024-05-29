@@ -7,11 +7,11 @@ sudo nixos-generate-config --no-filesystems --show-hardware-config | tee hardwar
 examples
 
 ```bash
-sudo nixos-rebuild boot .#macbookpro7-1 --no-write-lock-file
+sudo nixos-rebuild boot --flake .#macbookpro7-1 --no-write-lock-file
 ```
 
 ```bash
-sudo nixos-rebuild boot github:tromshusky/nixos#macbookpro7-1 --no-write-lock-file
+sudo nixos-rebuild boot --flake github:tromshusky/nixos#macbookpro7-1 --no-write-lock-file
 ```
 
 nixos-rebuild can depend on >10GB ram, so in case 
