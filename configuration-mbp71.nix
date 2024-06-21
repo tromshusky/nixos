@@ -10,6 +10,7 @@
     ./configuration.nix
     ./hardware-configurations/macbookpro7-1.nix
   ];
+  services.xserver.layout = "no,us";
   system.autoUpgrade = {
     enable = true;
     flags = [ "--no-write-lock-file" ];
