@@ -19,6 +19,7 @@
     pkgs.kitty
     pkgs.librewolf
     pkgs.thunderbird
+    pkgs.gnomeExtensions.dock-from-dash
     pkgs.vim
   ];
   imports = [
