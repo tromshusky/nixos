@@ -24,7 +24,7 @@
   home-manager.users."${config._module.args.guestUserName}" = {
     home.stateVersion = "${config.system.stateVersion}";
     dconf.settings = {
-      "org/gnome/shell".enabled-extensions = [ "", "dash-to-dock@micxgx.gmail.com" ];
+      "org/gnome/shell".enabled-extensions = [ "" "dash-to-dock@micxgx.gmail.com" ];
       "com/solus-project/budgie-panel".dark-theme = true;
       "org/cinnamon/desktop/interface".gtk-theme = "Mint-Y-Dark-Aqua";
       "org/gnome/desktop/interface".color-scheme = "prefer-dark";
