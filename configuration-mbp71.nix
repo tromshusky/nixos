@@ -11,6 +11,7 @@
     ./hardware-configurations/macbookpro7-1.nix
   ];
   services.xserver.xkb.layout = "no,us";
+  services.xserver.xkb.xkbVariant = "mac,";
   system.autoUpgrade = {
     enable = true;
     flags = [ "--no-write-lock-file" ];
