@@ -1,2 +1,3 @@
 .ssh/github
 .ssh/github.pub
+flake.lock
