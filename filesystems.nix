@@ -12,7 +12,7 @@ in
   fileSystems."/boot" =
     { device = bootDev;
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0077" "dmask=0077" "ro" ];
     };
 
   fileSystems."/nix" =
