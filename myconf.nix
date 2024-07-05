@@ -1,7 +1,5 @@
 { config, lib, pkgs, ... }: {
   environment.etc."nixos/backup".source = "${./.}";
-#  networking.networkmanager.enable =
-#    true; # Easiest to use and most distros use this by default.
   programs.firefox.enable = true;
   services.openssh.enable = true;
   services.xserver.enable = true;
