@@ -10,7 +10,7 @@ usage: put all these files in an empty folder
 
 (or git clone)
 ```
-git clone https://github.com/tromskusky/nixos/tree/pinetab2-minimal
+git clone -b pinetab2-minimal https://github.com/tromskusky/nixos
 ```
 
 hardware-configuration.nix and configraution.nix are the usual configurations. feel free to edit them (and/or remove ./config from flake.nix)
