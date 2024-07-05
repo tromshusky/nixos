@@ -2,6 +2,8 @@ One line install:
 
 ```curl https://raw.githubusercontent.com/tromshusky/nixos/pinetab2-minimal/install.sh | sudo sh```
 
+Manual formatting:
+
 example nixos configuration for pinetab2
 
 a backup of the configuration is found in /etc/nixos/backup after installation
