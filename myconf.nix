@@ -4,6 +4,9 @@
     true; # Easiest to use and most distros use this by default.
   programs.firefox.enable = true;
   services.openssh.enable = true;
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   time.timeZone = "Europe/Amsterdam";
   users.users.guest = {
     hashedPassword = ""; # Starts with empty password
