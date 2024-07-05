@@ -19,10 +19,9 @@
         ./configuration.nix
         ./myconf.nix
         {
-          nixpkgs.config.allowUnfree = true;
-	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
-             "bes2600-firmware-aarch64-unknown-linux-gnu"
-           ];
+          nixpkgs.config.allowUnfreePredicate = pkg:
+            builtins.elem (nixpkgs.lib.getName pkg)
+            [ "bes2600-firmware-aarch64-unknown-linux-gnu" ];
           boot.kernelPackages =
             rockchip.legacyPackages."x86_64-linux".kernel_linux_6_9_pinetab;
           hardware.firmware = [ rockchip.packages."x86_64-linux".bes2600 ];
