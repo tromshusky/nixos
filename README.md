@@ -1,6 +1,8 @@
 example nixos configuration for pinetab2
 
 a backup of the configuration is found in /etc/nixos/backup after installation
+the standard user is called guest with an empty password.
+the password can be changed by opening Xterm and entering ```passwd```
 
 usage: put all these files in an empty folder
 (or git clone)
