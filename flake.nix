@@ -4,7 +4,6 @@
   inputs = {
     utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-#    nixpkgsUnstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     rockchip = { url = "github:nabam/nixos-rockchip"; };
   };
@@ -20,7 +19,7 @@
   outputs = { self, ... }@inputs:
     let
 
-      pkgsUnstable = system:
+      pkgsUn = system:
         import inputs.nixpkgs {
           inherit system;
           crossSystem.system = "aarch64-linux";
@@ -28,20 +27,18 @@
         };
 
       bes2600Firmware = system:
-        (pkgsUnstable system).callPackage ./bes2600-firmware.nix { };
-
-#      asd = inputs.nixpkgs.pkgs.callPackage ./bes2600-firmware.nix ;
+        (pkgsUn system).callPackage ./bes2600-firmware.nix { };
 
       osConfig = buildPlatform:
         inputs.nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
+            ./config.nix
             ./configuration.nix
             {
               # Use cross-compilation for uBoot and Kernel.
               nixpkgs.config.allowBroken = true;
               nixpkgs.config.allowUnfree = true;
-#              hardware.firmware = [ (bes2600Firmware "x86_64-linux") ];
               hardware.firmware = [ (bes2600Firmware "aarch64-linux") ];
               boot.kernelPackages =
                 inputs.rockchip.legacyPackages.${buildPlatform}.kernel_linux_6_9_pinetab;

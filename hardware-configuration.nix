@@ -8,12 +8,12 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-#  boot.initrd.availableKernelModules = [ ];
-#  boot.initrd.kernelModules = [ ];
-#  boot.kernelModules = [ ];
-#  boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = [ ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
 
-  fileSystems."/" = lib.mkForce
+  fileSystems."/" =
     { device = "tmpfs";
       fsType = "tmpfs";
     };
