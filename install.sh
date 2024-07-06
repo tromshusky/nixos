@@ -30,7 +30,7 @@ sudo mount -t tmpfs tmpfs /mnt
 sudo mkdir -p /mnt/boot /mnt/nix /mnt/home/user1
 sudo mount $dev1"p1" /mnt/boot
 sudo mount $dev1"p2" -o subvol=@nix /mnt/nix
-sudo mount $dev1"p2" -o subvol=@user1 /mnt/home/user1
+sudo mount $dev1"p2" -o subvol=@home /mnt/home
 cd $tmpgit
 nix-shell -p git --run "git clone -b pinetab2-minimal https://github.com/tromshusky/nixos"
 cd nixos
