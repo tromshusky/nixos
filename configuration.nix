@@ -5,10 +5,14 @@ in {
   boot.kernelPackages = rockchip.legacyPackages."x86_64-linux".kernel_linux_6_9_pinetab; # "x86_64-linux" using the precompiled kernel on cachix
   boot.loader.generic-extlinux-compatible.enable = true;
   boot.loader.grub.enable = false;
+
   environment.etc."nixos/backup".source = "${./.}";
+
   hardware.firmware = [ rockchip.packages."aarch64-linux".bes2600 ];
   imports = [ ./hardware-configuration.nix ];
-  nix.settings.substituters = [ "https://cache.nixos.org/" "https://nabam-nixos-rockchip.cachix.org" ];
+
+  nix.settings.substituters = [ "https://cache.nixos.org/" "https://nabam-nixos-rockchip.cachix.org" ]; # use cachix
+
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "bes2600-firmware" ];
   programs.firefox.enable = true;
   programs.firefox.policies.Extensions.Install = [ "https://addons.mozilla.org/firefox/downloads/latest/i-dont-care-about-cookies/latest.xpi" "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi" ];
