@@ -33,6 +33,7 @@ sudo mount $dev1"p2" -o subvol=@nix /mnt/nix
 sudo mount $dev1"p2" -o subvol=@user1 /mnt/home/user1
 cd $tmpgit
 nix-shell -p git --run "git clone -b pinetab2-minimal https://github.com/tromshusky/nixos"
+cd nixos
 sudo nixos-generate-config --root /mnt
 cp /mnt/etc/nixos/* .
 sudo nixos-install --flake .#nixos
