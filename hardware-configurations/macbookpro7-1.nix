@@ -13,6 +13,37 @@
   boot.kernelModules = [ "kvm-intel" "wl" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
+  fileSystems."/" =
+    { device = "tmpfs";
+      fsType = "tmpfs";
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/d5177e1d-5956-436b-b6ef-40071e5fece5";
+      fsType = "btrfs";
+      options = [ "subvol=@nix" ];
+    };
+
+  fileSystems."/etc/NetworkManager/system-connections" =
+    { device = "/dev/disk/by-uuid/d5177e1d-5956-436b-b6ef-40071e5fece5";
+      fsType = "btrfs";
+      options = [ "subvol=@network-connections" ];
+    };
+
+  fileSystems."/home/user1" =
+    { device = "/dev/disk/by-uuid/d5177e1d-5956-436b-b6ef-40071e5fece5";
+      fsType = "btrfs";
+      options = [ "subvol=@user1" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/7996-1D0B";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  swapDevices = [ ];
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction

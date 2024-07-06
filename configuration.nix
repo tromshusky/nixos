@@ -25,7 +25,6 @@
   imports = [
     home-manager.nixosModules.default
     ./default-specialisation.nix
-    ./filesystems.nix
     ./firefox.nix
     ./specialisations.nix
     ./users.nix
