@@ -3,20 +3,19 @@ let
   rockchip = (builtins.getFlake "github:nabam/nixos-rockchip/8eefcf2e47ddf9d97aa573f829cc72b28bcb65f0");
 in {
   boot.kernelPackages = rockchip.legacyPackages."x86_64-linux".kernel_linux_6_9_pinetab; # "x86_64-linux" using the precompiled kernel on cachix
-  boot.loader.generic-extlinux-compatible.enable = true;
+  boot.loader.generic-extlinux-compatible.enable = true; # required to write boot entries
   boot.loader.grub.enable = false;
 
-  environment.etc."nixos/backup".source = "${./.}";
+  environment.etc."nixos/backup".source = "${./.}"; # backup configuration in /etc/nixos/backup
 
-  hardware.firmware = [ rockchip.packages."aarch64-linux".bes2600 ];
+  hardware.firmware = [ rockchip.packages."aarch64-linux".bes2600 ]; # wifi driver
   imports = [ ./hardware-configuration.nix ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # required to nixos-rebuild with builtins.getFlake
   nix.settings.substituters = [ "https://cache.nixos.org/" "https://nabam-nixos-rockchip.cachix.org" ]; # use cachix
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "bes2600-firmware" ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "bes2600-firmware" ]; # bes2600 requires nonfree
   programs.firefox.enable = true;
   programs.firefox.policies.Extensions.Install = [ "https://addons.mozilla.org/firefox/downloads/latest/i-dont-care-about-cookies/latest.xpi" "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi" ];
-  services.openssh.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.enable = true;
