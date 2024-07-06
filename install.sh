@@ -24,7 +24,7 @@ sudo mkfs.fat -F 32 $dev1"p1"
 sudo mkfs.btrfs $dev1"p2"
 sudo mount $dev1"p2" $tmpbt
 sudo btrfs subvolume create $tmpfbt/@nix
-sudo btrfs subvolume create $tmpfbt/@user1
+sudo btrfs subvolume create $tmpfbt/@home
 sudo umount $tmpbt
 sudo mount -t tmpfs tmpfs /mnt
 sudo mkdir -p /mnt/boot /mnt/nix /mnt/home/user1
