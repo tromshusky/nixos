@@ -25,12 +25,16 @@ sudo mkfs.btrfs $dev1"p2"
 sudo mount $dev1"p2" $tmpbt
 sudo btrfs subvolume create $tmpfbt/@nix
 sudo btrfs subvolume create $tmpfbt/@home
+sudo btrfs subvolume create $tmpfbt/@var-lib-waydroid
+sudo btrfs subvolume create $tmpfbt/@etc-Net-sysconn
 sudo umount $tmpbt
 sudo mount -t tmpfs tmpfs /mnt
-sudo mkdir -p /mnt/boot /mnt/nix /mnt/home/user1
+sudo mkdir -p /mnt/boot /mnt/nix /mnt/home /mnt/var/lib/waydroid /mnt/etc/NetworkManager/system-connnections
 sudo mount $dev1"p1" /mnt/boot
 sudo mount $dev1"p2" -o subvol=@nix /mnt/nix
 sudo mount $dev1"p2" -o subvol=@home /mnt/home
+sudo mount $dev1"p2" -o subvol=@var-lib-waydroid /mnt/var/lib/waydroid
+sudo mount $dev1"p2" -o subvol=@etc-Net-sysconn /mnt/etc/NetowrkManager/system-connections
 cd $tmpgit
 nix-shell -p git --run "git clone -b pinetab2-minimal https://github.com/tromshusky/nixos"
 cd nixos
