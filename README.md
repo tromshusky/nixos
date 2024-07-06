@@ -1,4 +1,4 @@
-One line install:
+One line install (from sd card):
 
 ```curl https://raw.githubusercontent.com/tromshusky/nixos/pinetab2-minimal/install.sh | sudo sh```
 
