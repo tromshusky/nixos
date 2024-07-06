@@ -38,6 +38,5 @@ sudo mount $dev1"p2" -o subvol=@etc-Net-sysconn /mnt/etc/NetowrkManager/system-c
 cd $tmpgit
 nix-shell -p git --run "git clone -b pinetab2-minimal https://github.com/tromshusky/nixos"
 cd nixos
-sudo nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/* .
+sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
 sudo nixos-install --flake .#nixos
