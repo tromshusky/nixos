@@ -11,7 +11,7 @@
     ];
   };
 
-  outputs = { self, nixpkgs, rockchip, home-manager, ... }@attrs: {
+  outputs = { self, nixpkgs, home-manager, ... }@attrs: {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = attrs;
