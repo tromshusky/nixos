@@ -1,7 +1,7 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   inputs.home-manager.url = "github:nix-community/home-manager";
-  inputs.rockchip.url = "github:nabam/nixos-rockchip";
+#  inputs.rockchip.url = "github:nabam/nixos-rockchip";
 
   # Use cache with packages from nabam/nixos-rockchip CI.
   nixConfig = {
