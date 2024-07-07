@@ -25,7 +25,7 @@
     };
 
   fileSystems."/var/lib/waydroid" =
-    { device = "/nix/nixos/@nix/wayd";
+    { device = "/nix/wayd";
       fsType = "none";
       options = [ "bind" ];
     };
