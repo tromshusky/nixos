@@ -42,6 +42,12 @@
       options = [ "subvol=@sysconn" ];
     };
 
+  fileSystems."/home/user1" =
+    { device = "/dev/disk/by-uuid/94a02f18-34ac-41e8-9d71-591f262764c6";
+      fsType = "btrfs";
+      options = [ "subvol=nixos/@user1" ];
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
