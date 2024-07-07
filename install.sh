@@ -1,5 +1,5 @@
 #!/bin/sh
-dev1=/dev/mmcblk1
+dev1=/dev/mmcblk0
 
 yn () {
   read -p "This will wipe $dev1 ! Continue (y/n)?" choice
