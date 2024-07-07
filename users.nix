@@ -32,6 +32,7 @@
       "org/gnome/shell".enabled-extensions = [
         ""
         "dash-to-dock@micxgx.gmail.com"
+        "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
       ];
       "org/gnome/shell".favorite-apps = [ "firefox.desktop" ];
       "org/x/apps/portal".color-scheme = "prefer-dark";
