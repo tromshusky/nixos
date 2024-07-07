@@ -53,6 +53,7 @@ fish
 
 format the internal disk and set up partition
 ```bash
+# careful, this is probably not the same as before 
 dev1=/dev/mmcblk0
 ```
 ```bash
@@ -65,10 +66,13 @@ mount filesystems
 ```bash
 sudo mount $dev1"p1" /mnt
 ```
-copy the files from github
+create an empty configuration
+```bash
+sudo nixos-generate-config --root /mnt
+```
+copy the files from github (overwrites empty configuration)
 ```bash
 git clone -b pinetab2-minimal https://github.com/tromskusky/nixos
-sudo mkdir -p /mnt/etc/nixos
 sudo cp nixos/*.nix /mnt/etc/nixos/ --verbose
 ```
 edit configuration if you want
