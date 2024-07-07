@@ -13,6 +13,11 @@
       specialArgs = attrs;
       modules = [ ./configuration-mbp71.nix ];
     };
+    nixosConfigurations."pinetab2" = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = attrs;
+      modules = [ ./configuration-pt2.nix ];
+    };
   };
 }
 
