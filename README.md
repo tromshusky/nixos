@@ -6,14 +6,14 @@ https://github.com/nabam/nixos-rockchip/releases/download/v24.05.20240630.7dca15
 
 # 2. Uncompress and copy to sd-card
 You open the terminal and unpack the image and flash it to the sd-card. On my pinetab, the sd-card gets recognized as `/dev/mmcblk1`
-```
+```bash
 lsblk | grep G.*disk
 # example:
 # mmcblk0 179:0   0 116.5G 0 disk
 # mmcblk1 179:96  0  29.5G 0 disk
 #################################
 ```
-```
+```bash
 target=/dev/mmcblk1
 unzstd ~/Downloads/pine-tab2-nixos-sd-image-aarch64-linux.img.zst | sudo dd of=$target conv=fsync status=progress
 ```
@@ -22,7 +22,7 @@ wait to finish. at the end it may hang for a long time, while the data was alrea
 reboot.
 # 3. Connect wifi with wpa_supplicant
 Wifi psk and password can be found on your phone > Wifi > TimHortons Secret Wifi or whatever > Share
-```
+```bash
 sudo systemctl start wpa_supplicant
 wpa_cli
 
@@ -37,17 +37,22 @@ wpa_cli
 
 # 4 Auto: One line install (from sd card):
 
-```
+```bash
 curl https://raw.githubusercontent.com/tromshusky/nixos/pinetab2-minimal/install.sh | sudo sh
 ```
 
 # 4 Manual: formatting
-(optional: colorful terminal)
+<details>
+  <summary>(optional: colorful terminal)</summary>
+  
+```bash
+nix-env -iA nixos.fish
+fish
 ```
-nix-env -iA nixos.fish && fish
-```
+</details>
+
 format the internal disk and set up partition
-```
+```bash
 dev1=/dev/mmcblk0
 sudo parted $dev1 -- mklabel gpt
 sudo parted $dev1 -- mkpart ESP ext4 18MB 100%
@@ -55,21 +60,21 @@ sudo parted $dev1 -- set 1 esp on
 sudo mkfs.ext4 $dev1"p1"
 ```
 mount filesystems
-```
+```bash
 sudo mount /dev/$dev1"p1" /mnt
 ```
 copy the files from github
-```
+```bash
 git clone -b pinetab2-minimal https://github.com/tromskusky/nixos
 sudo mkdir -p /mnt/etc/nixos
 sudo cp nixos/*.nix /mnt/etc/nixos/ --verbose
 ```
 edit configuration if you want
-```
+```bash
 sudo nano /mnt/etc/nixos/configuration.nix
 ```
 install the system
-```
+```bash
 sudo nixos-install
 ```
 if anything goes wrong then it is normally ok to google the problem and try again.
