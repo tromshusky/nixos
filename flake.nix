@@ -17,7 +17,6 @@
       specialArgs = attrs;
       modules = [
         ./configuration.nix
-#        ./myconf.nix
       ];
     };
   };
