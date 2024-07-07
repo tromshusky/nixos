@@ -10,9 +10,6 @@
     powerUserHome = "/home/user1";
     powerUserName = "jj";
   };
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 3;
   environment.etc."nixos/backup".source = "${./.}";
   environment.systemPackages = [
     pkgs.git
@@ -36,7 +33,6 @@
   nixpkgs.config.allowUnfree = true;
   services.displayManager.autoLogin.user = "${config._module.args.guestUserName}";
   services.openssh.enable = true;
-  swapDevices = [ { device = "/nix/swapfile"; size=20000; } ];
   system.autoUpgrade = {
     enable = true;
 #    flake = "${./flake.nix}";
