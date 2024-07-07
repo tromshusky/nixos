@@ -54,6 +54,8 @@ fish
 format the internal disk and set up partition
 ```bash
 dev1=/dev/mmcblk0
+```
+```bash
 sudo parted $dev1 -- mklabel gpt
 sudo parted $dev1 -- mkpart ESP ext4 18MB 100%
 sudo parted $dev1 -- set 1 esp on
@@ -61,7 +63,7 @@ sudo mkfs.ext4 $dev1"p1"
 ```
 mount filesystems
 ```bash
-sudo mount /dev/$dev1"p1" /mnt
+sudo mount $dev1"p1" /mnt
 ```
 copy the files from github
 ```bash
