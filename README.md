@@ -15,7 +15,7 @@ lsblk | grep G.*disk
 ```
 ```bash
 target=/dev/mmcblk1
-unzstd ~/Downloads/pine-tab2-nixos-sd-image-aarch64-linux.img.zst | sudo dd of=$target conv=fsync status=progress
+unzstd ~/Downloads/pine-tab2-nixos-sd-image-aarch64-linux.img.zst | sudo dd of=$target conv=fsync status=progress bs=1M
 ```
 wait to finish. at the end it may hang for a long time, while the data was already 'send' but not 'received'.
 
