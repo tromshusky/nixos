@@ -1,4 +1,4 @@
-[take me to installation command](https://github.com/tromshusky/nixos/tree/pinetab2-minimal/README.md#4)
+[take me to installation command](https://github.com/tromshusky/nixos/tree/pinetab2-minimal?tab=readme-ov-file#4-auto-one-line-install-from-sd-card)
 # 1. Download image
 Download sd-image from [nabam/nixos-rockchip](https://github.com/nabam/nixos-rockchip):
 
