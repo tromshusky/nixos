@@ -30,14 +30,11 @@
     "flakes"
     "nix-command"
   ];
-  nixpkgs.config.allowUnfree = true;
+#  nixpkgs.config.allowUnfree = true;
   services.displayManager.autoLogin.user = "${config._module.args.guestUserName}";
   services.openssh.enable = true;
-  system.autoUpgrade = {
-    enable = true;
-#    flake = "${./flake.nix}";
-  };
   system.stateVersion = "24.05";
 # services.automatic-timezoned.enable = true;
   time.timeZone = "Europe/Amsterdam";
+  virtualisation.waydroid.enable = true;
 }
