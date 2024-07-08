@@ -39,4 +39,5 @@ cd $tmpgit
 nix-shell -p git --run "git clone -b pinetab2-minimal https://github.com/tromshusky/nixos"
 cd nixos
 sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
+sudo nix --extra-experimental-features "nix-command flakes" build .#nixosConfigurations.pinetab2.config.system.build.toplevel --extra-substituters https://pinetab2-kernel.cachix.org?trusted=1
 sudo nixos-install --flake .#nixos
