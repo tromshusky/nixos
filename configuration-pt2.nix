@@ -14,16 +14,14 @@ in {
     ./hardware-configurations/pinetab2.nix
   ];
 
-  boot.kernelPackages = rockchip.legacyPackages."x86_64-linux".kernel_linux_6_9_pinetab; # "x86_64-linux" using the precompiled kernel on cachix
+  boot.kernelPackages = rockchip.legacyPackages."aarch64-linux".kernel_linux_6_9_pinetab;
   boot.loader.generic-extlinux-compatible.enable = true; # required to write boot entries
   boot.loader.grub.enable = false; # grub doesnt work on pinetab2
   hardware.firmware = [ rockchip.packages."aarch64-linux".bes2600 ]; # wifi driver
-  nix.settings.substituters = [ "https://nabam-nixos-rockchip.cachix.org" ]; # use cachix
+  nix.settings.substituters = [ "https://pinetab2-kernel.cachix.org" ]; # use cachix
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "bes2600-firmware" ]; # bes2600 requires nonfree
 
-  system.autoUpgrade = {
-    enable = true;
-    flags = [ "--no-write-lock-file" ];
-    flake = "github:tromshusky/nixos#pinetab2";
-  };
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.flags = [ "--no-write-lock-file" ];
+  system.autoUpgrade.flake = "github:tromshusky/nixos#pinetab2";
 }
