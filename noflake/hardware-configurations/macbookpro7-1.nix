@@ -30,6 +30,12 @@
       options = [ "subvol=@network-connections" ];
     };
 
+  fileSystems."/var/lib/flatpak" =
+    { device = "/dev/disk/by-uuid/d5177e1d-5956-436b-b6ef-40071e5fece5";
+      fsType = "btrfs";
+      options = [ "subvol=@var-lib-flatpak" ];
+    };
+
   fileSystems."/home/user1" =
     { device = "/dev/disk/by-uuid/d5177e1d-5956-436b-b6ef-40071e5fece5";
       fsType = "btrfs";

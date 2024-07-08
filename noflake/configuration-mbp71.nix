@@ -15,6 +15,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 3;
 
+  services.flatpak.enable = true;
+  environment.systemPackages = [ pkgs.gnome.gnome-software ];
+
   services.xserver.xkb.layout = "no,us";
   services.xserver.xkb.variant = "mac,";
   services.udev.extraRules = ''
