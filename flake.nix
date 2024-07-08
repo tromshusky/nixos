@@ -11,17 +11,17 @@
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs;
-      modules = [ ./configuration.nix ];
+      modules = [ noflake/configuration.nix ];
     };
     nixosConfigurations."macbookpro7-1" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs;
-      modules = [ ./configuration-mbp71.nix ];
+      modules = [ noflake/configuration-mbp71.nix ];
     };
     nixosConfigurations."pinetab2" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = attrs;
-      modules = [ ./configuration-pt2.nix ];
+      modules = [ noflake/configuration-pt2.nix ];
     };
   };
 }

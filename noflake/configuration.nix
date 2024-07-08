@@ -10,7 +10,8 @@
     powerUserHome = "/home/user1";
     powerUserName = "jj";
   };
-  environment.etc."nixos/backup".source = "${./.}";
+  environment.etc."nixos/backup/noflake".source = "${./.}";
+  environment.etc."nixos/backup/flake.nix".source = "${../flake.nix}";
   environment.systemPackages = [
     pkgs.git
     pkgs.kitty
@@ -30,7 +31,6 @@
     "flakes"
     "nix-command"
   ];
-#  nixpkgs.config.allowUnfree = true;
   services.displayManager.autoLogin.user = "${config._module.args.guestUserName}";
   services.openssh.enable = true;
   system.stateVersion = "24.05";
