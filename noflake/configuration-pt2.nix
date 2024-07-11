@@ -9,12 +9,20 @@ let
   rockchip = (
     builtins.getFlake "github:nabam/nixos-rockchip/8eefcf2e47ddf9d97aa573f829cc72b28bcb65f0"
   );
+  rockchip = (
+    builtins.getFlake "github:snowfallorg/nix-software-center/b9e0f53536e1e94e7d8c3cda3c6866b3f9d01386"
+  );
 in
 {
   nixpkgs.config.allowUnfree = true; # driver in hardware-configuration is unfree
   imports = [
     ./configuration.nix
     ./hardware-configurations/pinetab2.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    nix-software-center
+    # rest of your packages
   ];
 
   boot.kernelPackages = rockchip.legacyPackages."aarch64-linux".kernel_linux_6_9_pinetab;
