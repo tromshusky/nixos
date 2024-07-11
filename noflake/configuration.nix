@@ -4,7 +4,8 @@
   pkgs,
   home-manager,
   ...
-}: {
+}:
+{
   _module.args = {
     guestUserName = "guest";
     powerUserHome = "/home/user1";
@@ -34,7 +35,7 @@
   services.displayManager.autoLogin.user = "${config._module.args.guestUserName}";
   services.openssh.enable = true;
   system.stateVersion = "24.05";
-# services.automatic-timezoned.enable = true;
+  # services.automatic-timezoned.enable = true;
   time.timeZone = "Europe/Amsterdam";
   virtualisation.waydroid.enable = true;
 }

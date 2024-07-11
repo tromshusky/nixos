@@ -4,10 +4,13 @@
   pkgs,
   home-manager,
   ...
-}: 
+}:
 let
-  rockchip = (builtins.getFlake "github:nabam/nixos-rockchip/8eefcf2e47ddf9d97aa573f829cc72b28bcb65f0");
-in {
+  rockchip = (
+    builtins.getFlake "github:nabam/nixos-rockchip/8eefcf2e47ddf9d97aa573f829cc72b28bcb65f0"
+  );
+in
+{
   nixpkgs.config.allowUnfree = true; # driver in hardware-configuration is unfree
   imports = [
     ./configuration.nix
