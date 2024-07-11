@@ -9,7 +9,7 @@ let
   rockchip = (
     builtins.getFlake "github:nabam/nixos-rockchip/8eefcf2e47ddf9d97aa573f829cc72b28bcb65f0"
   );
-  rockchip = (
+  nix-sft = (
     builtins.getFlake "github:snowfallorg/nix-software-center/b9e0f53536e1e94e7d8c3cda3c6866b3f9d01386"
   );
 in
@@ -21,7 +21,7 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    nix-software-center
+    nix-sft.packages.${system}.nix-software-center
     # rest of your packages
   ];
 
