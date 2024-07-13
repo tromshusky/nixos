@@ -10,11 +10,10 @@
   imports = [
     ./configuration.nix
     ./hardware-configurations/macbookpro7-1.nix
-    ./nvidia340.nix
+#    ./nvidia340.nix
     ./flatpak.nix
     ./systemd-boot.nix
   ];
-
 
   services.xserver.xkb.layout = "no,us";
   services.xserver.xkb.variant = "mac,";
