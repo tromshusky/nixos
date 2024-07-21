@@ -36,6 +36,20 @@ wpa_cli
 ```
 
 # 4 Auto: One line install (from sd card):
+<details>
+  <summary>(optional: open browser over sway)</summary>
+  
+```bash
+nix-env -iA nixos.sway nixos.firefox nixos.foot nixos.dmenu
+sway # cage -s sway # if that dont work
+# Pine+enter on the new screen to open terminal (foot)
+swaymsg output "*" transform 90
+swaymsg input "*" map_to_output "*"
+firefox
+# Pine+W or Pine+F for fullscreen
+```
+
+</details>
 
 ```bash
 curl https://raw.githubusercontent.com/tromshusky/nixos/pinetab2-minimal/install.sh | sudo sh
