@@ -33,8 +33,10 @@ let
       ];
       services.displayManager.autoLogin.user = "${config._module.args.guestUserName}";
     };
-  backup.environment.etc."nixos/backup/noflake".source = "${./.}";
-  backup.environment.etc."nixos/backup/flake.nix".source = "${../flake.nix}";
+  backup = {
+    environment.etc."nixos/backup/noflake".source = "${./.}";
+    environment.etc."nixos/backup/flake.nix".source = "${../flake.nix}";
+  };
   flakes.nix.settings.experimental-features = [
     "flakes"
     "nix-command"
