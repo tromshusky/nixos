@@ -16,7 +16,7 @@ let
       services.xserver.enable = lib.mkDefault true;
       services.xserver.desktopManager.gnome.enable = lib.mkDefault true;
       services.xserver.displayManager.gdm.enable = lib.mkDefault true;
-      services.gnome.core-utilities.enable = lib.mkDefault false;
+      services.gnome.core-utilities.enable = false;
       environment.gnome.excludePackages = lib.mkDefault [ pkgs.gnome-tour ];
       services.xserver.excludePackages = lib.mkDefault [ pkgs.xterm ];
       system.stateVersion = "24.05";
@@ -32,7 +32,7 @@ let
         home-manager.nixosModules.default
         ./default-specialisation.nix
       ];
-      services.displayManager.autoLogin.user = "${config._module.args.guestUserName}";
+      services.displayManager.autoLogin.user = "${g}";
     };
   amsterdam.time.timeZone = "Europe/Amsterdam";
   backup = {
