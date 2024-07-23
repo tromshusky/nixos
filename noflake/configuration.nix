@@ -8,11 +8,15 @@
 let
   out =
     firefox
-    // users
     // amsterdam
     // backup
     // flakes
+    // firefox
+    // openssh
+    // specialisations
     // standardDesktop
+    // users
+    // waydroid
     // {
       environment.etc."nixos/backup/noflake".source = "${./.}";
       environment.etc."nixos/backup/flake.nix".source = "${../flake.nix}";
@@ -58,7 +62,7 @@ let
     };
   };
   ############################        specialisations          ####################
-  spec.specialisation = {
+  specialisations.specialisation = {
     #    budgie.configuration.imports = [./desktops/budgie.nix];
     #    cinnamon.configuration.imports = [./desktops/cinnamon.nix];
     #    enlightenment.configuration.imports = [./desktops/enlightenment.nix];
