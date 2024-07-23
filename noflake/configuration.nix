@@ -14,8 +14,8 @@ let
     // flakes
     // standardDesktop
     // {
-    environment.etc."nixos/backup/noflake".source = "${./.}";
-    environment.etc."nixos/backup/flake.nix".source = "${../flake.nix}";
+      environment.etc."nixos/backup/noflake".source = "${./.}";
+      environment.etc."nixos/backup/flake.nix".source = "${../flake.nix}";
       system.stateVersion = "24.05";
       environment.systemPackages = [
         pkgs.git
@@ -36,8 +36,7 @@ let
     services.xserver.excludePackages = lib.mkDefault [ pkgs.xterm ];
   };
   amsterdam.time.timeZone = "Europe/Amsterdam";
-  backup = {
-  };
+  backup = { };
   flakes.nix.settings.experimental-features = [
     "flakes"
     "nix-command"
@@ -63,8 +62,8 @@ let
     #    budgie.configuration.imports = [./desktops/budgie.nix];
     #    cinnamon.configuration.imports = [./desktops/cinnamon.nix];
     #    enlightenment.configuration.imports = [./desktops/enlightenment.nix];
-    gnome-full.configuration.imports = [ ./desktops/gnome.nix ];
-    hyprland.configuration.imports = [ ./desktops/hyprland.nix ];
+    gnome-full.configuration = gnome;
+    hyprland.configuration = hyprland;
     #    pantheon.configuration.imports = [./desktops/pantheon.nix];
     #    plasma6.configuration.imports = [./desktops/plasma6.nix];
     #    xfce.configuration.imports = [./desktops/xfce.nix];
@@ -111,6 +110,61 @@ let
         "org/x/apps/portal".color-scheme = "prefer-dark";
       };
     };
+  };
+  budgie = {
+    services.xserver.enable = true;
+    services.xserver.desktopManager.budgie.enable = true;
+    services.xserver.displayManager.lightdm.enable = true;
+  };
+  cinnamon = {
+    services.xserver.enable = true;
+    services.xserver.desktopManager.cinnamon.enable = true;
+    services.displayManager.defaultSession = "cinnamon";
+  };
+  enlightenment = {
+    services.xserver.enable = true;
+    services.xserver.desktopManager.enlightenment.enable = true;
+  };
+  gnome-mini = {
+    services.xserver.enable = true;
+    services.xserver.desktopManager.gnome.enable = true;
+    services.gnome.core-utilities.enable = false;
+    environment.gnome.excludePackages = [ pkgs.gnome-tour ];
+    services.xserver.excludePackages = [ pkgs.xterm ];
+  };
+  gnome = {
+    services.xserver.enable = true;
+    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.desktopManager.gnome.enable = true;
+  };
+  hyprland = {
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+    programs.hyprland.enable = true;
+    programs.waybar.enable = true;
+    programs.nm-applet.enable = true;
+    environment.systemPackages = [
+      pkgs.rofi-wayland
+      pkgs.wofi
+      pkgs.kitty
+      pkgs.hyprpaper
+    ];
+  };
+  pantheon = {
+    services.xserver.enable = true;
+    services.xserver.desktopManager.pantheon.enable = true;
+    services.pantheon.apps.enable = false;
+  };
+  plasma6 = {
+    services.xserver.enable = true;
+    services.desktopManager.plasma6.enable = true;
+  };
+  xfce = {
+    services.xserver.enable = true;
+    services.xserver.desktopManager.xfce.enable = true;
+    services.displayManager.defaultSession = "xfce";
   };
 in
 out
