@@ -33,6 +33,7 @@ let
       ];
       services.displayManager.autoLogin.user = "${config._module.args.guestUserName}";
     };
+  amsterdam.time.timeZone = "Europe/Amsterdam";
   backup = {
     environment.etc."nixos/backup/noflake".source = "${./.}";
     environment.etc."nixos/backup/flake.nix".source = "${../flake.nix}";
