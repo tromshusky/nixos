@@ -12,13 +12,7 @@ let
     // amsterdam
     // backup
     // flakes
-    // {
-      services.xserver.enable = lib.mkDefault true;
-      services.xserver.desktopManager.gnome.enable = lib.mkDefault true;
-      services.xserver.displayManager.gdm.enable = lib.mkDefault true;
-      services.gnome.core-utilities.enable = false;
-      environment.gnome.excludePackages = lib.mkDefault [ pkgs.gnome-tour ];
-      services.xserver.excludePackages = lib.mkDefault [ pkgs.xterm ];
+    // standardDesktop // {
       system.stateVersion = "24.05";
       environment.systemPackages = [
         pkgs.git
@@ -28,10 +22,16 @@ let
         pkgs.gnomeExtensions.dash-to-dock
         pkgs.vim
       ];
-      imports = [
-        home-manager.nixosModules.default
-      ];
+      imports = [ home-manager.nixosModules.default ];
     };
+  standardDesktop = {
+      services.xserver.enable = lib.mkDefault true;
+      services.xserver.desktopManager.gnome.enable = lib.mkDefault true;
+      services.xserver.displayManager.gdm.enable = lib.mkDefault true;
+      services.gnome.core-utilities.enable = false;
+      environment.gnome.excludePackages = lib.mkDefault [ pkgs.gnome-tour ];
+      services.xserver.excludePackages = lib.mkDefault [ pkgs.xterm ];
+  };
   amsterdam.time.timeZone = "Europe/Amsterdam";
   backup = {
     environment.etc."nixos/backup/noflake".source = "${./.}";
@@ -43,6 +43,7 @@ let
   ];
   waydroid.virtualisation.waydroid.enable = true;
   openssh.services.openssh.enable = true;
+#############################           firefox                 ###################
   firefox.programs.firefox = {
     enable = true;
     policies = {
@@ -56,6 +57,7 @@ let
       };
     };
   };
+############################        specialisations          ####################
   spec.specialisation = {
     #    budgie.configuration.imports = [./desktops/budgie.nix];
     #    cinnamon.configuration.imports = [./desktops/cinnamon.nix];
@@ -65,7 +67,8 @@ let
     #    pantheon.configuration.imports = [./desktops/pantheon.nix];
     #    plasma6.configuration.imports = [./desktops/plasma6.nix];
     #    xfce.configuration.imports = [./desktops/xfce.nix];
-  };
+ };
+###########################            users                #####################
   g = "guest";
   users = {
     services.displayManager.autoLogin.user = "${g}";
