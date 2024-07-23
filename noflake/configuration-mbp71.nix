@@ -10,9 +10,10 @@
   imports = [
     ./configuration.nix
     ./hardware-configurations/macbookpro7-1.nix
-#    ./nvidia340.nix
+    #    ./nvidia340.nix
     ./flatpak.nix
     ./systemd-boot.nix
+    ./swap20G.nix
   ];
 
   services.xserver.xkb.layout = "no,us";
@@ -20,13 +21,6 @@
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="usb", RUN+="${pkgs.bash}/bin/bash -c 'echo 200 > /sys/class/leds/smc\:\:kbd_backlight/brightness'"
   '';
-
-  swapDevices = [
-    {
-      device = "/nix/swapfile";
-      size = 20000;
-    }
-  ];
 
   system.autoUpgrade = {
     enable = true;

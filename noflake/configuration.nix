@@ -30,9 +30,7 @@ let
       ];
       imports = [
         home-manager.nixosModules.default
-        ./default-specialisation.nix
       ];
-      services.displayManager.autoLogin.user = "${g}";
     };
   amsterdam.time.timeZone = "Europe/Amsterdam";
   backup = {
@@ -70,6 +68,7 @@ let
   };
   g = "guest";
   users = {
+    services.displayManager.autoLogin.user = "${g}";
     users.users = {
       "guest" = {
         uid = 1001;
