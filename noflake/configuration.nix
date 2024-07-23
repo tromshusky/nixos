@@ -67,7 +67,7 @@ let
     #    xfce.configuration.imports = [./desktops/xfce.nix];
   };
   g = "guest";
-  usr = {
+  users = {
     users.users = {
       "guest" = {
         uid = 1001;
