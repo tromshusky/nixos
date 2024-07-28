@@ -28,8 +28,8 @@ wpa_cli
 
   add_network
   # CTRL-EVENT-NETWORK-ADDED 0
-  set_network 0 ssid 'TimHortons Slow Wifi'
-  set_network 0 psk 'starbucksisacheapcopy'
+  set_network 0 ssid "TimHortons Slow Wifi"
+  set_network 0 psk "starbucksisacheapcopy"
   enable 0
 
 # Ctrl+C
