@@ -95,7 +95,7 @@ sudo nano /mnt/etc/nixos/configuration.nix
 ```
 install the system
 ```bash
-sudo nixos-install
+sudo nixos-install --option extra-experimental-features flakes
 ```
 if anything goes wrong then it is normally ok to google the problem and try again.
 
